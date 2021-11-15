@@ -18,7 +18,9 @@
     "js"
   ],
   "files": [
-    "lib"
+    "lib",
+    "conan",
+    "cmake"
   ],
   "main": "lib/index",
   "types": "lib/index",
