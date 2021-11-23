@@ -53,7 +53,8 @@ export class Conan extends Toolchain {
       Conan.compilerVersion[this.target]
     );
     let buildCmd = `conan install ${this.libId}@ -pr:b default -pr:h ${profilePath}`;
-    if (this.options.length) buildCmd += this.options.map(x => ` -o ${x}`).join('');
+    if (this.options.length)
+      buildCmd += this.options.map((x) => ` -o ${x}`).join('');
     if (this.target.includes('linux')) buildCmd += ' --build=missing';
     return [
       {
@@ -73,7 +74,11 @@ export class Conan extends Toolchain {
         cmd: '',
         fn: async () => {
           execSync(
-            `conan info ${this.libId}@ -pr:b default -pr:h ${profilePath}${this.options.map(x => ` -o ${x}`).join('')} --paths --json ${this.jsonInfoPath}`
+            `conan info ${
+              this.libId
+            }@ -pr:b default -pr:h ${profilePath}${this.options
+              .map((x) => ` -o ${x}`)
+              .join('')} --paths --json ${this.jsonInfoPath}`
           );
           const json = JSON.parse(readFileSync(this.jsonInfoPath).toString());
           Conan.packageInfo[this.id] = json.map((x: any) => x.package_folder);
@@ -109,7 +114,11 @@ export class Conan extends Toolchain {
       mkdirSync(this.buildDir, { recursive: true });
       writeFileSync(profilePath, profileContent);
       execSync(
-        `conan info ${this.libId}@ -pr:b default -pr:h ${profilePath}${this.options.map(x => ` -o ${x}`).join('')} --paths --json ${this.jsonInfoPath}`
+        `conan info ${
+          this.libId
+        }@ -pr:b default -pr:h ${profilePath}${this.options
+          .map((x) => ` -o ${x}`)
+          .join('')} --paths --json ${this.jsonInfoPath}`
       );
       const json = JSON.parse(readFileSync(this.jsonInfoPath).toString());
       rmSync(this.jsonInfoPath, { force: true });
