@@ -23,13 +23,7 @@ build_type=Release`;
     case 'arm64-apple-darwin':
       return `[settings]
 os=Macos
-arch=${
-        target.startsWith('x86_64')
-          ? 'x86_64'
-          : target.startsWith('aarch64')
-          ? 'armv8'
-          : 'armv7hf'
-      }
+arch=armv8
 compiler=apple-clang
 compiler.version=${compilerVersion}
 compiler.libcxx=libc++

@@ -37,7 +37,13 @@ LDFLAGS=-fuse-ld=lld
 
 [settings]
 os=Linux
-arch=armv8
+arch=${
+    target.startsWith('x86_64')
+      ? 'x86_64'
+      : target.startsWith('aarch64')
+      ? 'armv8'
+      : 'armv7hf'
+  }
 compiler=clang
 compiler.version=${compilerVersion}
 compiler.libcxx=libstdc++11
