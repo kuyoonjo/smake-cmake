@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 
-export function generateLinuxProfile(target: string) {
+export function generateLinuxProfile(target: string, compilerVersion: string) {
   const cmakeToolchainDir = resolve(__dirname, '..', 'cmake').replace(
     /\\/g,
     '/'
@@ -39,7 +39,7 @@ LDFLAGS=-fuse-ld=lld
 os=Linux
 arch=armv8
 compiler=clang
-compiler.version=12
+compiler.version=${compilerVersion}
 compiler.libcxx=libstdc++11
 build_type=Release`;
 }

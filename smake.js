@@ -10,7 +10,7 @@ co.searchPaths = [
   ...libcurl.installDirs,
 ];
 // co.flags = `-DBUILD_ALL=ON`;
-co.flags = `-DWITH_LIBCURL=ON -DWITH_OPENSSL=ON -DBUILD_ALL=ON -DSTATIC_VS_CRT=ON`;
+co.flags = `-DWITH_LIBCURL=ON -DWITH_OPENSSL=ON -DBUILD_ALL=ON -DSTATIC_VS_CRT=ON -DCURL_STATICLIB=ON`;
 // co.env.LDFLAGS = '-framework Cocoa -framework SystemConfiguration -framework Security';
 
 module.exports = [
