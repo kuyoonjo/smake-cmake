@@ -1,4 +1,4 @@
-const { Conan, Cmake } = require('./lib');
+const { Conan, Cmake, Autotools } = require('./lib');
 
 const zlib = new Conan('zlib/1.2.11', 'x86_64-pc-windows-msvc');
 const openssl = new Conan('openssl/1.1.1l', 'x86_64-pc-windows-msvc');
@@ -13,10 +13,13 @@ co.searchPaths = [
 co.flags = `-DWITH_LIBCURL=ON -DWITH_OPENSSL=ON -DBUILD_ALL=ON -DSTATIC_VS_CRT=ON -DCURL_STATICLIB=ON`;
 // co.env.LDFLAGS = '-framework Cocoa -framework SystemConfiguration -framework Security';
 
+const stressapptest = new Autotools('../../tools/stressapptest', 'x86_64-linux-gnu');
+
 module.exports = [
-  zlib,
-  openssl,
-  libcurl,
-  co,
+  // zlib,
+  // openssl,
+  // libcurl,
+  // co,
+  stressapptest,
 ];
 // console.log(libcurl.installDirs);
